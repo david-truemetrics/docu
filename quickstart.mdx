@@ -13,7 +13,7 @@ The other sections of this document describe in detail about how to integrate & 
 <AccordionGroup>
   <Accordion icon="github" title="Clone your demo application">
     To ensure a smooth intgration in your app, a sample integration with a basic demonstrator app is preparded for you. You can find this repository 
-    [here](https://github.com/TRUE-Metrics-io/truemetrics_android_demo_app_p). The  To clone the repository
+    [here](https://github.com/TRUE-Metrics-io/truemetrics_android_demo_app_p). To clone the repository
     locally, follow these
     [instructions](https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository)
     in your terminal.
@@ -21,7 +21,7 @@ The other sections of this document describe in detail about how to integrate & 
 
 ### Get your API Key
   <Accordion icon="github" title="Get your API Key">
-    To upload sensor data and to receive the results over the API, two different API keys are necessary. The first one is used to send data to the API adn is typically used in the drivers app. 
+    To upload sensor data and to receive the results over the API, two different API keys are necessary. The first one is used to send data to the API and is typically used in the drivers app. 
     The second API key is used to receive the results and is mainly used in the backend, when route planning an doptimisation happens.
     
     If you only want to make some first tests, you can use our demo API Key 
@@ -29,17 +29,15 @@ The other sections of this document describe in detail about how to integrate & 
     `MSgcfnGu0p3E2KhFwTP3N5NSrCSXm54U6DI0PW51`
     
     If you plan to use all features, request an API Key by sending us a
-    [message](mailto:jan@truemetrics.io). We come back to you as fast as possible. 
+    [message](mailto:jan@truemetrics.io). We'll get back to you as fast as possible. 
   </Accordion>
   
 </AccordionGroup>
 
 ### Permissions
-SDK must require Location permissions enabled including background location permission to collect fused location data that helps our algorithms provide efficient results.
-You can refer to Android developers guidelines to integrate location permissions and user consent. Additional permission to access local storage is required and permission to check availablility of internet and wifi state.
+SDK requires Location permissions (including background location) to collect fused location data that helps our algorithms provide efficient results.
+You can refer to Android developers guidelines to integrate location permissions and user consent. 
+Additionally, SDK requires permission to post notifications in order to show Foreground service notification. Demo app showcases creating notification channels and asking for permission to post notifications.
 
 ###  Software Specifications
-Android SDK can run on minimum Android 9.0 (Pie) OS Android devices and compiled on Android 13 (T) Android’s SDK tools. 
-
-### Programming Language of SDK
-The SDK developed purely using Kotlin language which is also supported & recommended by Android developers as Kotlin-first approach.
+Android SDK can run on minimum Android 7.0 (API level 24)
