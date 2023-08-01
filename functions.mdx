@@ -1,0 +1,133 @@
+---
+title: 'SDK Interface'
+description: 'Overview over the functionality.'
+---
+
+### Architecture overview
+
+The following diagram gives an general overview:
+![architecture and main function](/images/SDK.png)
+
+### Setup and local maven repo
+
+Project requires Java 17. If necessary, adjust our Java version in your IDE, typically in `IDE's File -> Project structure -> SDK Location`.
+SDK itself is distributed as maven package containing AAR, JARs and POM file declaring dependencies. As next step, add the local maven repo to project repositories. This repo will contain the SDK.
+
+Update your project-level `settings.gradle` file and `dependencyResolutionManagement` section bny the following:
+
+```json
+dependencyResolutionManagement {
+    repositoriesMode.set(RepositoriesMode.PREFER_PROJECT)
+    repositories {
+        // other repositories
+        maven {
+            name = 'local'
+            url = "repo"
+        }
+    }
+}
+
+```
+
+As next step, create a `repo` folder in project's root, copy `truemetricssdk.zip` into it and extract it, `repo` should look like this:
+```json
+repo/io/truemetrics/truemetricssdk/...
+```
+
+### Foreground service and notification
+
+In order to reliably collect data, SDK starts a Foreground service and shows a notification while recording is in progress.
+
+SDK manages Foreground service but needs existing notification channel and a notification that will be shown so integrating your app needs to create a notification channel, provide a notification in `Config` parameter and ask user for notification permission if device runs Android 13 or later.
+
+Creating a notification channel using `NotificationManagerCompat`:
+
+```kotlin
+private val notificationManager = NotificationManagerCompat.from(context)
+
+notificationManager.createNotificationChannel(
+    NotificationChannelCompat.Builder("FOREGROUND_SERVICE_CHANNEL", NotificationManagerCompat.IMPORTANCE_LOW)
+        .setName("Foreground service notification title")
+        .setShowBadge(false)
+        .build()
+)
+```
+
+Creating a notification:
+
+```kotlin
+val notification = NotificationCompat.Builder(context, "FOREGROUND_SERVICE_CHANNEL")
+            .setContentTitle("Foreground notification title")
+            .setSmallIcon(R.drawable.ic_notification_logo)
+            .setOngoing(true)
+						.build()
+```
+
+You can find example snippets for creating a notification channel and asking permission to post notifications in the [Demo app](https://github.com/TRUE-Metrics-io/truemetrics_android_demo_app_p).
+
+### Initialize SDK
+
+SDK behaves like a singleton object that manages its own internal state. Before actually using the SDK you need to initialize it:
+
+```kotlin
+TruemetricsSDK.initialize(
+    this,
+    Config(
+        apiKey = "YOUR-API-KEY",
+        foregroundNotification = notification
+    )
+)
+```
+
+`foregroundNotification` parameter is a notification that will be shown when Foreground service is running, i.e. when recording is in progress.
+
+### Status callback
+
+Set SDK status callback to get notified about SDK state changes and potential errors:
+
+```kotlin
+TruemetricsSDK.setStatusListener(object : StatusListener{
+    override fun onStateChange(state: State) {}
+    override fun onError(errorCode: ErrorCode, message: String?) {}
+})
+```
+
+`onError` callback will be invoked when something happens that prevents SDK from operating, e.g. API KEY authorization fails, device storage gets full, etc. 
+
+Possible error codes:
+
+| Error code | Description |
+| --- | --- |
+| AUTHENTICATION_ERROR | API key is not valid, expired or revoked |
+| UPLOAD_ERROR | Recordings couldn't be uploaded after exhausting all attempts |
+| STORAGE_FULL | Device storage is full which prevents saving sensor readings |
+| MISSING_NOTIFICATION_PERMISSION | Permission to post notification is not granted which means that Foreground service cannot be started |
+
+### Start recording
+
+```kotlin
+TruemetricsSDK.startRecording()
+```
+
+Starting the recording also starts Foreground service and shows notification supplied in `Config` in system's status bar. Recording will continue even when app exits.
+
+### Stop recording
+
+```kotlin
+TruemetricsSDK.stopRecording()
+```
+
+Stopping recording also stops Foreground service and removes notification.
+
+### Log metatada
+
+```kotlin
+TruemetricsSDK.logMetadata(payload: String)
+```
+
+### Deinitialize SDK
+
+```kotlin
+TruemetricsSDK.deinitialize()
+```
+De-initialization stops recording if in progress and tears down the SDK and cancels all scheduled uploads.

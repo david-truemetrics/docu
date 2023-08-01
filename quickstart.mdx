@@ -1,86 +1,45 @@
 ---
 title: 'Quickstart'
-description: 'Start building awesome documentation in under 5 minutes'
+description: 'Start integration in less than 5 minutes.'
 ---
 
 ## Setup your development
 
-Learn how to update your docs locally and and deploy them to the public.
+Learn how to integrate the truemetrics Android SDK into your app.
+The other sections of this document describe in detail about how to integrate & use the SDK in your application. 
 
-### Edit and preview
+### Test with DEMO App
 
 <AccordionGroup>
-  <Accordion icon="github" title="Clone your docs locally">
-    During the onboarding process, we created a repository on your Github with
-    your docs content. You can find this repository on our
-    [dashboard](https://dashboard.mintlify.com). To clone the repository
+  <Accordion icon="github" title="Clone your demo application">
+    To ensure a smooth intgration in your app, a sample integration with a basic demonstrator app is preparded for you. You can find this repository 
+    [here](https://github.com/TRUE-Metrics-io/truemetrics_android_demo_app_p). The  To clone the repository
     locally, follow these
     [instructions](https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository)
     in your terminal.
   </Accordion>
-  <Accordion icon="rectangle-terminal" title="Preview changes">
-    Previewing helps you make sure your changes look as intended. We built a
-    command line interface to render these changes locally. 1. Install the
-    [Mintlify CLI](https://www.npmjs.com/package/mintlify) to preview the
-    documentation changes locally with this command: ``` npm i -g mintlify ```
-    2. Run the following command at the root of your documentation (where
-    `mint.json` is): ``` mintlify dev ```
+
+### Get your API Key
+  <Accordion icon="github" title="Get your API Key">
+    To upload sensor data and to receive the results over the API, two different API keys are necessary. The first one is used to send data to the API adn is typically used in the drivers app. 
+    The second API key is used to receive the results and is mainly used in the backend, when route planning an doptimisation happens.
+    
+    If you only want to make some first tests, you can use our demo API Key 
+    
+    `MSgcfnGu0p3E2KhFwTP3N5NSrCSXm54U6DI0PW51`
+    
+    If you plan to use all features, request an API Key by sending us a
+    [message](mailto:jan@truemetrics.io). We come back to you as fast as possible. 
   </Accordion>
+  
 </AccordionGroup>
 
-### Deploy your changes
+### Permissions
+SDK must require Location permissions enabled including background location permission to collect fused location data that helps our algorithms provide efficient results.
+You can refer to Android developers guidelines to integrate location permissions and user consent. Additional permission to access local storage is required and permission to check availablility of internet and wifi state.
 
-<AccordionGroup>
+###  Software Specifications
+Android SDK can run on minimum Android 9.0 (Pie) OS Android devices and compiled on Android 13 (T) Android’s SDK tools. 
 
-<Accordion icon="message-bot" title="Install our Github app">
-  Our Github app automatically deploys your changes to your docs site, so you
-  don't need to manage deployments yourself. You can find the link to install on
-  your [dashboard](https://dashboard.mintlify.com). Once the bot has been
-  successfully installed, there should be a check mark next to the commit hash
-  of the repo.
-</Accordion>
-<Accordion icon="rocket" title="Push your changes">
-  [Commit and push your changes to
-  Git](https://docs.github.com/en/get-started/using-git/pushing-commits-to-a-remote-repository#about-git-push)
-  for your changes to update in your docs site. If you push and don't see that
-  the Github app successfully deployed your changes, you can also manually
-  update your docs through our [dashboard](https://dashboard.mintlify.com).
-</Accordion>
-
-</AccordionGroup>
-
-## Update your docs
-
-Add content directly in your files with MDX syntax and React components. You can use any of our components, or even build your own.
-
-<CardGroup>
-
-<Card title="Style Your Docs" icon="paintbrush" href="/settings/global">
-  Add flair to your docs with personalized branding.
-</Card>
-
-<Card
-  title="Add API Endpoints"
-  icon="square-code"
-  href="/api-playground/configuration"
->
-  Implement your OpenAPI spec and enable API user interaction.
-</Card>
-
-<Card
-  title="Integrate Analytics"
-  icon="chart-mixed"
-  href="/analytics/supported-integrations"
->
-  Draw insights from user interactions with your documentation.
-</Card>
-
-<Card
-  title="Host on a Custom Domain"
-  icon="browser"
-  href="/settings/custom-domain/subdomain"
->
-  Keep your docs on your own website's subdomain.
-</Card>
-
-</CardGroup>
+### Programming Language of SDK
+The SDK developed purely using Kotlin language which is also supported & recommended by Android developers as Kotlin-first approach.

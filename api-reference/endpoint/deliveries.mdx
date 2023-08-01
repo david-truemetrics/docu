@@ -1,0 +1,100 @@
+---
+title: "Delivery Insights"
+api: "GET https://egba6dif6k.execute-api.eu-central-1.amazonaws.com/V2/deliveries/"
+description: "This endpoint provides access to insights about your historical deliveries. Here you can find stop and pivking times and estimated distances from parking place to the customer. TO access a delivery, just use the delivery id as path parameter and get your results."
+---
+
+### Query Parameters
+
+<ParamField path="id_delivery" type="string" initialValue="02ba969157efe246129b586b736f4e276e6de5d77b726bb550449519966c1360">
+  Name of the Street
+</ParamField>
+
+<ParamField header="Content-Type" type="string" initialValue='application/json' >
+</ParamField>
+<ParamField header="x-api-key" type="string" initialValue='MSgcfnGu0p3E2KhFwTP3N5NSrCSXm54U6DI0PW51' >
+</ParamField>
+
+### Response
+
+<ResponseField name="results" type="array">
+  Array of results for the given id. If the array is empty, no deliveries have been found. If the delivery id has been used multiple times during recording, also multiple entries in the result array are possible.
+</ResponseField>
+
+<ResponseField name="message" type="string">
+  Message indicating whether the call was successful.
+</ResponseField>
+
+<RequestExample>
+
+```bash Example Request
+
+curl --location 'https://egba6dif6k.execute-api.eu-central-1.amazonaws.com/V2/deliveries/02ba969157efe246129b586b736f4e276e6de5d77b726bb550449519966c1360' \
+--header 'x-api-key: YOURKEY' \
+--header 'Content-Type: application/json'
+```
+
+</RequestExample>
+
+<ResponseExample>
+
+```json Response
+{
+    "results": [
+        {
+            "hash_consignee": null,
+            "service_outdoors_from_costumer": {
+                "dt": "0",
+                "t_start": "1688553899.8072311878204345703125"
+            },
+            "arrival": {
+                "dt": "0",
+                "t_start": "1688553899.8072311878204345703125"
+            },
+            "service_outdoors_to_costumer": {
+                "dt": "0",
+                "t_start": "1688553899.8072311878204345703125"
+            },
+            "stop": {
+                "dt": "0",
+                "t_start": "1688553899.8072311878204345703125"
+            },
+            "created": "1688553899.8072311878204345703125",
+            "streetnumber": "80",
+            "postalcode": "12345",
+            "country": "DE",
+            "id_phone": "my_phone_id",
+            "picking": {
+                "dt": "0",
+                "t_start": "1688553899.8072311878204345703125"
+            },
+            "adress_raw": "Meine Adressse ist hier",
+            "service_indoors": {
+                "dt": "0",
+                "t_start": "1688553899.8072311878204345703125"
+            },
+            "id_customer": "my_customer_id",
+            "locality": "Berlin",
+            "coords_street": {
+                "lat": "0",
+                "lon": "0"
+            },
+            "service_outdoors": {
+                "dt": "0",
+                "t_start": "1688553899.8072311878204345703125"
+            },
+            "adress_hash": "9628136c6bd3054b71f00913f99fbdbd7a2d12707691514922f76e157c2963a3",
+            "coords_delivery": {
+                "lat": "0",
+                "lon": "0"
+            },
+            "id_delivery": "02ba969157efe246129b586b736f4e276e6de5d77b726bb550449519966c1360",
+            "id_tour": "9e7846a214a74a7cdddaf6143d61b45fb8ed70326f47462066afb7d5643e8229",
+            "street": "my_street"
+        }
+    ],
+    "message": "successfully retrieved 1 entries."
+}
+```
+
+</ResponseExample>

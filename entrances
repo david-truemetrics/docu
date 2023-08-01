@@ -1,0 +1,35 @@
+{
+    "results": [
+        {
+            "poligon_entrance": [
+                {
+                    "lat": "0",
+                    "lon": "0"
+                }
+            ],
+            "hash_consignee": null,
+            "id_entrance": "bc4e4fb281da041c5bfa51a03eaee5e9b1cfe39f9394396121f7044a1b107761",
+            "created": "1688553899.8072311878204345703125",
+            "streetnumber": "80",
+            "postalcode": "12345",
+            "country": "DE",
+            "id_phone": "my_phone_id",
+            "adress_raw": "Meine Adressse ist hier",
+            "coords_entrance": {
+                "lat": "0",
+                "lon": "0"
+            },
+            "id_customer": "my_customer_id",
+            "locality": "Berlin",
+            "coords_street": {
+                "lat": "0",
+                "lon": "0"
+            },
+            "adress_hash": "9628136c6bd3054b71f00913f99fbdbd7a2d12707691514922f76e157c2963a3",
+            "id_delivery": "my_delivery_id",
+            "id_tour": "my_route_id",
+            "street": "my_street"
+        }
+    ],
+    "message": "successfully retrieved 1 entries."
+}
