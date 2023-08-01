@@ -8,12 +8,11 @@ description: 'Overview over the functionality.'
 The following diagram gives an general overview:
 ![architecture and main function](/images/SDK.png)
 
-### Setup and local maven repo
+### Setup and  maven repository
 
 Project requires Java 17. If necessary, adjust our Java version in your IDE, typically in `IDE's File -> Project structure -> SDK Location`.
-SDK itself is distributed as maven package containing AAR, JARs and POM file declaring dependencies. As next step, add the local maven repo to project repositories. This repo will contain the SDK.
 
-Update your project-level `settings.gradle` file and `dependencyResolutionManagement` section bny the following:
+As next step update your project-level `settings.gradle` file and `dependencyResolutionManagement` section by the following:
 
 ```json
 dependencyResolutionManagement {
@@ -21,17 +20,20 @@ dependencyResolutionManagement {
     repositories {
         // other repositories
         maven {
-            name = 'local'
-            url = "repo"
+            name = 'truemetrics SDK'
+            url = "https://github.com/TRUE-Metrics-io/truemetrics_android_SDK_p_maven/raw/main"
         }
     }
 }
 
 ```
 
-As next step, create a `repo` folder in project's root, copy `truemetricssdk.zip` into it and extract it, `repo` should look like this:
+### Declare dependency on TruemetricsSDK
+
+Inside your `build.gradle` add the following dependency:
+
 ```json
-repo/io/truemetrics/truemetricssdk/...
+implementation 'io.truemetrics:truemetricssdk:0.0.1'
 ```
 
 ### Foreground service and notification
