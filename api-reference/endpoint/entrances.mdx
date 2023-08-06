@@ -1,6 +1,6 @@
 ---
 title: "Entrances"
-api: "GET https://egba6dif6k.execute-api.eu-central-1.amazonaws.com/V2/entrances/"
+api: "GET https://api.truemetrics.cloud/V2/results/entrances/"
 description: "This endpoint gives access to the entrances by its address."
 ---
 
@@ -40,7 +40,7 @@ description: "This endpoint gives access to the entrances by its address."
 <RequestExample>
 
 ```bash Example Request
-curl --location 'https://egba6dif6k.execute-api.eu-central-1.amazonaws.com/V2/parkingplaces?street=my_street&streetnumber=80&locality=Berlin&postalcode=12345&country=DE' \
+curl --location 'https://api.truemetrics.cloud/V2/results/parkingplaces?street=my_street&streetnumber=80&locality=Berlin&postalcode=12345&country=DE' \
 --header 'x-api-key: YOURKEY' \
 --header 'Content-Type: application/json'
 ```

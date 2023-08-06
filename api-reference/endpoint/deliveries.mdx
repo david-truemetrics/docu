@@ -1,6 +1,6 @@
 ---
 title: "Delivery Insights"
-api: "GET https://egba6dif6k.execute-api.eu-central-1.amazonaws.com/V2/deliveries/{id_delivery}"
+api: "GET https://api.truemetrics.cloud/V2/results/deliveries/{id_delivery}"
 description: "This endpoint provides access to insights about your historical deliveries. Here you can find stop and pivking times and estimated distances from parking place to the customer. TO access a delivery, just use the delivery id as path parameter and get your results."
 ---
 
@@ -29,7 +29,7 @@ description: "This endpoint provides access to insights about your historical de
 
 ```bash Example Request
 
-curl --location 'https://egba6dif6k.execute-api.eu-central-1.amazonaws.com/V2/deliveries/02ba969157efe246129b586b736f4e276e6de5d77b726bb550449519966c1360' \
+curl --location 'https://api.truemetrics.cloud/V2/results/deliveries/02ba969157efe246129b586b736f4e276e6de5d77b726bb550449519966c1360' \
 --header 'x-api-key: YOURKEY' \
 --header 'Content-Type: application/json'
 ```
