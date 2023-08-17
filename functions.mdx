@@ -33,7 +33,7 @@ dependencyResolutionManagement {
 Inside your `build.gradle` add the following dependency:
 
 ```json
-implementation 'io.truemetrics:truemetricssdk:0.0.2'
+implementation 'io.truemetrics:truemetricssdk:0.0.3'
 ```
 
 ### Foreground service and notification
@@ -124,8 +124,9 @@ Stopping recording also stops Foreground service and removes notification.
 ### Log metatada
 
 ```kotlin
-TruemetricsSDK.logMetadata(payload: String)
+TruemetricsSDK.logMetadata(payload: Map<String, String>)
 ```
+SDK will serialize payload into JSON.
 
 ### Deinitialize SDK
 
