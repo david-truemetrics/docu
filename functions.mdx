@@ -33,7 +33,7 @@ dependencyResolutionManagement {
 Inside your `build.gradle` add the following dependency:
 
 ```json
-implementation 'io.truemetrics:truemetricssdk:0.0.2'
+implementation 'io.truemetrics:truemetricssdk:0.0.3'
 ```
 
 ### Foreground service and notification
@@ -124,8 +124,9 @@ Stopping recording also stops Foreground service and removes notification.
 ### Log metadata
 
 ```kotlin
-TruemetricsSDK.logMetadata(payload: String)
+TruemetricsSDK.logMetadata(payload: Map<String, String>)
 ```
+SDK will serialize payload into JSON.
 
 Most of our customers query the data by the customers adresses. That means, that most costumers call the [entrance endpoint](https://docu.truemetrics.cloud/api-reference/endpoint/entrances#query-parameters) by using the customers address as identifier. Others want to have more flexibilty and also want to query the data by an identifier for a route or a courier identifier. 
 
