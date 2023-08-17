@@ -12,14 +12,23 @@ The other sections of this document describe in detail about how to integrate & 
 
 <AccordionGroup>
   <Accordion icon="github" title="Clone your demo application">
-    To ensure a smooth intgration in your app, a sample integration with a basic demonstrator app is preparded for you. You can find this repository 
-    [here](https://github.com/TRUE-Metrics-io/truemetrics_android_demo_app_p). To clone the repository
-    locally, follow these
+    To ensure a smooth intgration in your app, we prepared a sample integration with a basic demonstrator  just for you. You can find this repository 
+    [here](https://github.com/TRUE-Metrics-io/truemetrics_android_demo_app_p). Just clone the repository
+    locally, by following these
     [instructions](https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository)
     in your terminal.
 
-   <img height="100" src="images/Start.png" />
- 
+    Just run or deploy the application in your favorite IDE.
+  </Accordion>
+
+  <Accordion icon="github" title="Prepare the SDK integration">
+
+  Integrate the SDK into your app by following these steps:
+  
+  1. Read [the docu](/functions) of the SDK interface
+  2. Think about, when your app requires to initialize the truemetrics SDK. Typically this is done when the integrating App is started.
+  3. Think about, when to start and stop the SDK. This could be for example when the driver starts a new delivery or starts with his route. Or it could be just the whole shift of a driver.
+
   </Accordion>
 
   <Accordion icon="github" title="Get your SDK API Key">
@@ -31,6 +40,11 @@ The other sections of this document describe in detail about how to integrate & 
     `MSgcfnGu0p3E2KhFwTP3N5NSrCSXm54U6DI0PW51`
   </Accordion>
 
+  <Accordion icon="github" title="Integrate via Maven">
+    To ensure a smooth intgration in your app, we provide you a maven repository. Just take a look into the [documenation](https://docu.truemetrics.cloud/functions#setup-and-maven-repository) on how to integrate the maven repository
+  </Accordion>
+
+
   <Accordion icon="github" title="Connect your Backend">
 
     The second API key (called RESULTS API KEY) is used when you want to receive the results of a delivery from [https://api.truemetrics.cloud/V2/results](https://api.truemetrics.cloud/V2/results).
@@ -41,10 +55,12 @@ The other sections of this document describe in detail about how to integrate & 
 
 </AccordionGroup>
 
+
 ### App permissions
-SDK requires Location permissions (including background location) to collect fused location data that helps our algorithms provide efficient results.
+SDK requires location permissions (including background location) to collect fused location data that helps our algorithms provide efficient results.
 You can refer to Android developers guidelines to integrate location permissions and user consent. 
 Additionally, SDK requires permission to post notifications in order to show Foreground service notification. Demo app showcases creating notification channels and asking for permission to post notifications.
 
 ###  Software Specifications
 Android SDK can run on minimum Android 7.0 (API level 24)
+
