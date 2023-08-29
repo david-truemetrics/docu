@@ -1,16 +1,16 @@
 ---
 title: 'SDK Interface'
-description: 'Overview over the functionality.'
+description: 'Overview of the functionality.'
 ---
 
 ### Architecture overview
 
-The following diagram gives an general overview:
+The following diagram gives a general overview:
 ![architecture and main function](/images/SDK.png)
 
 ### Setup and  maven repository
 
-Project requires Java 17. If necessary, adjust our Java version in your IDE, typically in `IDE's File -> Project structure -> SDK Location`.
+Project requires Java 17. If necessary, adjust your Java version in your IDE, typically in `IDE's File -> Project structure -> SDK Location`.
 
 As next step update your project-level `settings.gradle` file and `dependencyResolutionManagement` section by the following:
 
@@ -128,10 +128,10 @@ TruemetricsSDK.logMetadata(payload: Map<String, String>)
 ```
 SDK will serialize payload into JSON.
 
-Most of our customers query the data by the customers adresses. That means, that most costumers call the [entrance endpoint](https://docu.truemetrics.cloud/api-reference/endpoint/entrances#query-parameters) by using the customers address as identifier. Others want to have more flexibilty and also want to query the data by an identifier for a route or a courier identifier. 
+Most of our customers query the data by customer adresses. That means, that most costumers call the [entrance endpoint](https://docu.truemetrics.cloud/api-reference/endpoint/entrances#query-parameters) by using the customer's address as an identifier. Other customers seek more flexibility and also want to query data by an identifier for a route or a courier.
 
-By [sending this information](https://docu.truemetrics.cloud/functions#log-metatada) from your App to our SDK, we enable you later on to filter the results by these identifiers.
-If you are unsure about the best practice for your use case, please contact us and we will help you to find the best solution.
+By [sending this information](https://docu.truemetrics.cloud/functions#log-metatada) from your app to our SDK, we enable you to filter the results by these identifiers later on.
+If you're unsure about best practices for your use case, reach out, and we'll guide you to the best solution.
 
 
 ### Deinitialize SDK
