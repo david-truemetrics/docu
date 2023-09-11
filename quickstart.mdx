@@ -8,53 +8,47 @@ description: 'Start the integration in less than 5 minutes.'
 Learn how to integrate the truemetrics Android SDK into your app.
 The other sections of this document describe in detail how to integrate and use the SDK in your application. 
 
-### How to integrate the SDK
+## Gey your SDK API key
 
-<AccordionGroup>
-  <Accordion icon="github" title="Clone the demo application">
-    To ensure a smooth integration in your app, we prepared a sample integration with a basic demonstrator  just for you. You can find this repository 
-    [here](https://github.com/TRUE-Metrics-io/truemetrics_android_demo_app_p). Just clone the repository
-    locally, by following these
-    [instructions](https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository)
-    in your terminal.
+For using the SDK to upload data from the integrating app (e.g. your driver app), an API key is required.
+The integrating app has to set this api key (called SDK API KEY) in the initialization of the SDK (see also [here in the documentation](/functions)). 
 
-    Just run or deploy the application in your favorite IDE.
-  </Accordion>
+If you only want to make some first upload tests, you can use our demo SDK API KEY 
 
-  <Accordion icon="github" title="Prepare the SDK integration">
+`MSgcfnGu0p3E2KhFwTP3N5NSrCSXm54U6DI0PW51`
 
-  Integrate the SDK into your app by following these steps:
+### How to integrate the SDK for native apps
+
+#### Clone the demo application
+
+To ensure a smooth integration in your app, we prepared a sample integration with a basic demonstrator just for you. You can find this repository 
+[here](https://github.com/TRUE-Metrics-io/truemetrics_android_demo_app_p). Just clone the repository
+locally, by following these
+[instructions](https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository)
+in your terminal.
+
+Just run or deploy the application in your favorite IDE.
+
+#### Prepare the SDK integration
+
+Integrate the SDK into your app by following these steps:
   
-  1. Read [the documentation](/functions) of the SDK interface.
-  2. Think about, when your app requires to initialize the truemetrics SDK. Typically this is done when the integrating App is started.
-  3. Think about, when to start and stop the SDK. This could be for example when the driver starts a new delivery or starts with his route. Or it could be just the whole shift of a driver.
+1. Read [the documentation](/functions) of the SDK interface.
+2. Think about, when your app requires to initialize the truemetrics SDK. Typically this is done when the integrating App is started.
+3. Think about, when to start and stop the SDK. This could be for example when the driver starts a new delivery or starts with his route. Or it could be just the whole shift of a driver.
 
-  </Accordion>
+### How to integrate the SDK for React Native apps
 
-  <Accordion icon="github" title="Get your SDK API Key">
-    For using the SDK to upload data from the integrating app (e.g. your driver app), an API key is required.
-    The integrating app has to set this api key (called SDK API KEY) in the initialization of the SDK (see also [here in the documentation](/functions)). 
+We have also prepared a React Native demo app to show how to integrate our SDK. You can find it [here](https://github.com/TRUE-Metrics-io/truemetrics_android_demo_react_app_p). 
 
-    If you only want to make some first upload tests, you can use our demo SDK API KEY 
+There is a native module called `TruemetricsSdkModule` in the `android` module of React Native demo app. `TruemetricsSdkModule` handles interaction with the SDK.
+
+### Connect your backend
+
+The second API key (called RESULTS API KEY) is used when you want to receive the results of a delivery from [https://api.truemetrics.cloud/V2/results](https://api.truemetrics.cloud/V2/results).
     
-    `MSgcfnGu0p3E2KhFwTP3N5NSrCSXm54U6DI0PW51`
-  </Accordion>
-
-  <Accordion icon="github" title="Integrate via Maven">
-    To ensure a smooth integration in your app, we provide you a maven repository. Just take a look into the [documentation](https://docu.truemetrics.cloud/functions#setup-and-maven-repository) on how to integrate the maven repository
-  </Accordion>
-
-
-  <Accordion icon="github" title="Connect your Backend">
-
-    The second API key (called RESULTS API KEY) is used when you want to receive the results of a delivery from [https://api.truemetrics.cloud/V2/results](https://api.truemetrics.cloud/V2/results).
-    
-    If you plan to use all features and to actually receive results, request an API Key by sending us a
-    [message](mailto:jan@truemetrics.io). We'll get back to you as fast as possible. 
-  </Accordion>
-
-</AccordionGroup> 
-
+If you plan to use all features and to actually receive results, request an API Key by sending us a
+[message](mailto:jan@truemetrics.io). We'll get back to you as fast as possible. 
 
 ### App permissions
 SDK requires location permissions (including background location) to collect fused location data that helps our algorithms provide efficient results.
