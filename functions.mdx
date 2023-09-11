@@ -33,7 +33,7 @@ dependencyResolutionManagement {
 Inside your `build.gradle` add the following dependency:
 
 ```json
-implementation 'io.truemetrics:truemetricssdk:1.0.0'
+implementation 'io.truemetrics:truemetricssdk:1.0.2'
 ```
 
 ### Foreground service and notification
@@ -91,6 +91,7 @@ Set SDK status callback to get notified about SDK state changes and potential er
 TruemetricsSDK.setStatusListener(object : StatusListener{
     override fun onStateChange(state: State) {}
     override fun onError(errorCode: ErrorCode, message: String?) {}
+    override fun askPermissions(permissions: List<String>) {}
 })
 ```
 
@@ -104,6 +105,13 @@ Possible error codes:
 | UPLOAD_ERROR | Recordings couldn't be uploaded after exhausting all attempts |
 | STORAGE_FULL | Device storage is full which prevents saving sensor readings |
 | MISSING_NOTIFICATION_PERMISSION | Permission to post notification is not granted which means that Foreground service cannot be started |
+
+`askPermissions` callback will be invoked based on necesarry permissions for enabled sensors in remote configuration. At the moment, list of permission can include:
+- `android.permission.READ_PHONE_STATE`
+- `android.permission.ACTIVITY_RECOGNITION`
+- `android.permission.ACCESS_COARSE_LOCATION`
+- `android.permission.ACCESS_FINE_LOCATION`
+- `android.permission.ACCESS_BACKGROUND_LOCATION`
 
 ### Start recording
 
