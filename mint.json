@@ -42,7 +42,9 @@
     {
       "group": "API Documentation",
       "pages": [
-        "api-reference/endpoint/parkingPlaces", "api-reference/endpoint/deliveries",  "api-reference/endpoint/entrances"
+        "api-reference/endpoint/parkingPlaces",
+        "api-reference/endpoint/deliveries",
+        "api-reference/endpoint/entrances"
       ]
     }
   ],

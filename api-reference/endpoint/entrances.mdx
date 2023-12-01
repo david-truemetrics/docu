@@ -1,25 +1,13 @@
 ---
 title: "Entrances"
-api: "GET https://api.truemetrics.cloud/V2/results/entrances/"
+api: "GET https://api.truemetrics.cloud/V2/results/entrances/{id_customer}"
 description: "This endpoint gives access to the entrances by its address. "
 ---
 
 ### Query Parameters
 
-<ParamField query="street" type="string" initialValue="my_street">
-  Name of the Street
-</ParamField>
-<ParamField query="streetnumber" type="string" initialValue="80">
-  Streetnumber of the address.
-</ParamField>
-<ParamField query="locality" type="string" initialValue= "Berlin">
-  Locality of the address.
-</ParamField>
-<ParamField query="postalcode" type="string" initialValue= "12345">
-  Postcal code of the address.
-</ParamField>
-<ParamField query="country" type="string" initialValue= "DE">
-  TCountry code in ISO 3166-1 alpha-2 format.
+<ParamField query="id_customer" type="string">
+  `id` number of the customer, as a string.
 </ParamField>
 
 <ParamField header="Content-Type" type="string" initialValue='application/json' >
@@ -38,13 +26,11 @@ description: "This endpoint gives access to the entrances by its address. "
 </ResponseField>
 
 <RequestExample>
-
 ```bash Example Request
-curl --location 'https://api.truemetrics.cloud/V2/results/parkingplaces?street=my_street&streetnumber=80&locality=Berlin&postalcode=12345&country=DE' \
+curl --location 'https://api.truemetrics.cloud/V2/results/entrances?id_customer=12345' \
 --header 'x-api-key: YOURKEY' \
 --header 'Content-Type: application/json'
 ```
-
 </RequestExample>
 
 <ResponseExample>
@@ -53,38 +39,15 @@ curl --location 'https://api.truemetrics.cloud/V2/results/parkingplaces?street=m
 {
     "results": [
         {
-            "polygon_entrance": [
+            "entrances": [
                 {
-                    "lat": "0",
-                    "lon": "0"
+                    "lat": "0.0",
+                    "lon": "0.0"
                 }
-            ],
-            "hash_consignee": null,
-            "id_entrance": "bc4e4fb281da041c5bfa51a03eaee5e9b1cfe39f9394396121f7044a1b107761",
-            "created": "1688553899.8072311878204345703125",
-            "streetnumber": "80",
-            "postalcode": "12345",
-            "country": "DE",
-            "id_phone": "my_phone_id",
-            "adress_raw": "Meine Adressse ist hier",
-            "coords_entrance": {
-                "lat": "0",
-                "lon": "0"
-            },
-            "id_customer": "my_customer_id",
-            "locality": "Berlin",
-            "coords_street": {
-                "lat": "0",
-                "lon": "0"
-            },
-            "adress_hash": "9628136c6bd3054b71f00913f99fbdbd7a2d12707691514922f76e157c2963a3",
-            "id_delivery": "my_delivery_id",
-            "id_tour": "my_route_id",
-            "street": "my_street"
+            ]
         }
     ],
-    "message": "successfully retrieved 1 entries."
+    "message": "Successfully retrieved entrances for this id_customer."
 }
 ```
-
 </ResponseExample>

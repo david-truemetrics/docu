@@ -29,7 +29,7 @@ description: "This endpoint provides access to insights about your historical de
 
 ```bash Example Request
 
-curl --location 'https://api.truemetrics.cloud/V2/results/deliveries/02ba969157efe246129b586b736f4e276e6de5d77b726bb550449519966c1360' \
+curl --location 'https://api.truemetrics.cloud/V2/results/deliveries/id_example_external' \
 --header 'x-api-key: YOURKEY' \
 --header 'Content-Type: application/json'
 ```
@@ -40,60 +40,138 @@ curl --location 'https://api.truemetrics.cloud/V2/results/deliveries/02ba969157e
 
 ```json Response
 {
-    "results": [
-        {
-            "hash_consignee": null,
-            "service_outdoors_from_customer": {
-                "dt": "0",
-                "t_start": "1688553899.8072311878204345703125"
-            },
-            "arrival": {
-                "dt": "0",
-                "t_start": "1688553899.8072311878204345703125"
-            },
-            "service_outdoors_to_customer": {
-                "dt": "0",
-                "t_start": "1688553899.8072311878204345703125"
-            },
-            "stop": {
-                "dt": "0",
-                "t_start": "1688553899.8072311878204345703125"
-            },
-            "created": "1688553899.8072311878204345703125",
-            "streetnumber": "80",
-            "postalcode": "12345",
-            "country": "DE",
-            "id_phone": "my_phone_id",
-            "picking": {
-                "dt": "0",
-                "t_start": "1688553899.8072311878204345703125"
-            },
-            "adress_raw": "Meine Adressse ist hier",
-            "service_indoors": {
-                "dt": "0",
-                "t_start": "1688553899.8072311878204345703125"
-            },
-            "id_customer": "my_customer_id",
-            "locality": "Berlin",
-            "coords_street": {
-                "lat": "0",
-                "lon": "0"
-            },
-            "service_outdoors": {
-                "dt": "0",
-                "t_start": "1688553899.8072311878204345703125"
-            },
-            "adress_hash": "9628136c6bd3054b71f00913f99fbdbd7a2d12707691514922f76e157c2963a3",
-            "coords_delivery": {
-                "lat": "0",
-                "lon": "0"
-            },
-            "id_delivery": "02ba969157efe246129b586b736f4e276e6de5d77b726bb550449519966c1360",
-            "id_tour": "9e7846a214a74a7cdddaf6143d61b45fb8ed70326f47462066afb7d5643e8229",
-            "street": "my_street"
-        }
+  "statusCode": 200,
+  "headers": {
+    "Access-Control-Allow-Origin": "*",
+    "Access-Control-Allow-Credentials": true
+  },
+  "body": {
+    "stops": [
+      {
+        "ts": [
+          1699225817.83503,
+          1699225834.979354,
+          1699225841.0302918,
+          1699225897.5057118,
+          1699225918.6839943,
+          1699225937.8452976
+        ],
+        "ts_event": [
+          1699225863
+        ],
+        "number_of_events": 1,
+        "id_phone": "",
+        "ids_address": [],
+        "version_sequencing": "v2",
+        "lats_reference_external": [
+          59.40858
+        ],
+        "id_stop": "asda321sdasdasd342324a",
+        "hash_deliveries": "asda321sdasdasd342324a",
+        "t_utc_created": 1701252019.442101,
+        "t_end": [
+          24.6864472502
+        ],
+        "types_event": [
+          "pickup"
+        ],
+        "t_start": 1699225817.83503,
+        "use_labels": false,
+        "ids_all_delivery_external": [
+          "id_example_external"
+        ],
+        "lats_event": [
+          59.408449692
+        ],
+        "states": [
+          "START",
+          "S",
+          "C",
+          "S2",
+          "F",
+          "END"
+        ],
+        "lons_event": [
+          24.6864472502
+        ],
+        "lons_reference_external": [
+          24.68667
+        ],
+        "id_delivery_external": "id_example_external",
+        "coords_parking": {
+          "lat": 59.4084750686,
+          "lon": 24.6864458694
+        },
+        "t_service_indoors": 0,
+        "t_service_outdoors": 77.6537024974823,
+        "t_picking": 6.05093789100647,
+        "t_total": 83.70464038848877,
+        "t_stop": 83.70464038848877
+      },
+      {
+        "ts": [
+          1699226203.1683023,
+          1699226222.1939633,
+          1699226224.1966643,
+          1699226277.268245,
+          1699226943.1663785,
+          1699226952.1785338
+        ],
+        "ts_event": [
+          1699226268
+        ],
+        "number_of_events": 1,
+        "id_phone": "id_phone_example",
+        "ids_address": [],
+        "version_sequencing": "v2",
+        "lats_reference_external": [
+          59.39821
+        ],
+        "id_stop": "id_stop_example",
+        "hash_deliveries": "asda321sdasdasd342324a",
+        "t_utc_created": 1701252202.920812,
+        "t_end": [
+          24.6468801512
+        ],
+        "types_event": [
+          "delivery"
+        ],
+        "t_start": 1699226203.1683023,
+        "use_labels": false,
+        "ids_all_delivery_external": [
+          "id_example_external"
+        ],
+        "lats_event": [
+          59.3983149706
+        ],
+        "states": [
+          "START",
+          "S",
+          "C",
+          "S2",
+          "F",
+          "END"
+        ],
+        "lons_event": [
+          24.6468801512
+        ],
+        "lons_reference_external": [
+          24.647078
+        ],
+        "id_delivery_external": "id_example_external",
+        "coords_parking": {
+          "lat": 59.3983578,
+          "lon": 24.6468601
+        },
+        "t_service_indoors": 0,
+        "t_service_outdoors": 718.9697141647339,
+        "t_picking": 2.0027010440826416,
+        "t_total": 720.9724152088165,
+        "t_stop": 720.9724152088165
+      }
     ],
-    "message": "successfully retrieved 1 entries."
+    "message": "Successfully requested delivery."
+  }
 }
 ```
 
