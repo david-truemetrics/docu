@@ -60,13 +60,22 @@ For a broader search, this method allows users to specify a set of coordinates a
 
 <RequestExample>
 
-```bash Example Request
+```bash Example Request for accessing via address
 curl --location 'https://api.truemetrics.cloud/V2/results/parkingplaces?street=my_street&streetnumber=80&locality=Berlin&postalcode=12345&country=DE' \
 --header 'x-api-key: YOURKEY' \
 --header 'Content-Type: application/json'
 ```
 
 </RequestExample>
+
+<RequestExample>
+```bash Example Request for accessing via coordinates
+curl --location 'https://api.truemetrics.cloud/V2/results/parkingplaces?lat=50.3&lon=13.5&distance=500 \
+--header 'x-api-key: YOURKEY' \
+--header 'Content-Type: application/json'
+```
+</RequestExample>
+
 
 <ResponseExample>
 
