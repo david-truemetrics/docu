@@ -5,7 +5,13 @@ description: "This endpoint gives access to the parking places by its address. "
 ---
 
 ### Query Parameters
+The API provides two distinct methods for accessing parking place information:
 
+Access via Address: This method is ideal for users interested in retrieving parking place data specifically associated with a given address. By supplying the address, the API returns information on parking places that have been utilized in relation to that address. This approach is particularly useful for users focusing on parking data in a defined area or seeking historical parking usage at a particular location.
+
+Access via Coordinates and Distance: For a broader search, this method allows users to specify a set of coordinates and a distance parameter. The API then returns a list of all parking places located within the specified radius from the given point. The distance parameter is defined by the user and is measured using the Chebyshev distance metric. This metric, also known as the maximum metric, calculates the greatest of the differences along latitude and longitude.
+
+Parameter for access via Address
 <ParamField query="street" type="string" initialValue="my_street">
   Name of the Street
 </ParamField>
@@ -22,6 +28,20 @@ description: "This endpoint gives access to the parking places by its address. "
   TCountry code in ISO 3166-1 alpha-2 format.
 </ParamField>
 
+
+Parameter for access via Address
+<ParamField query="lat" type="float" initialValue= "1">
+  Latitude of the center coordinates.
+</ParamField>
+<ParamField query="lon" type="float" initialValue= "1">
+  Longitude of the center coordinates.
+</ParamField>
+<ParamField query="distance" type="float" initialValue= "1">
+  Distance in meters in which the parking places shall be searched. The maximal value is 1000.
+</ParamField>
+
+
+Parameters for both access methods:
 <ParamField header="Content-Type" type="string" initialValue='application/json' >
 </ParamField>
 <ParamField header="x-api-key" type="string" initialValue='MSgcfnGu0p3E2KhFwTP3N5NSrCSXm54U6DI0PW51' >
@@ -30,11 +50,11 @@ description: "This endpoint gives access to the parking places by its address. "
 ### Response
 
 <ResponseField name="results" type="array">
-  Array of parking places for the given address.
+  An array of parking places for the given address.
 </ResponseField>
 
 <ResponseField name="message" type="string">
-  Message indicating whether the call was successful.
+  A message indicating whether the call was successful.
 </ResponseField>
 
 <RequestExample>
@@ -53,37 +73,12 @@ curl --location 'https://api.truemetrics.cloud/V2/results/parkingplaces?street=m
 {
     "results": [
         {
-            "hash_consignee": null,
             "id_parking_place": "af25987c50ad6fe71d622852623c9fa95c07c6a72651470b0b4ffc62dc4c8801",
-            "created": "1688553899.8072311878204345703125",
-            "streetnumber": "80",
-            "postalcode": "12345",
-            "country": "DE",
-            "id_phone": "my_phone_id",
-            "adress_raw": "Meine Adressse ist hier",
-            "polygon_parkingplace": [
-                {
-                    "lat": "0",
-                    "lon": "0"
-                }
-            ],
-            "id_customer": "my_customer_id",
-            "locality": "Berlin",
-            "coords_street": {
-                "lat": "0",
-                "lon": "0"
-            },
-            "adress_hash": "9628136c6bd3054b71f00913f99fbdbd7a2d12707691514922f76e157c2963a3",
-            "id_delivery": "my_delivery_id",
-            "id_tour": "my_route_id",
-            "street": "my_street",
-            "coords_parkingplace": {
-                "lat": "0",
-                "lon": "0"
-            }
+            "lat": "0",
+            "lon": "0"
         }
     ],
-    "message": "successfully retrieved 1 entries."
+    "message": "successfully retrieved 1 entry."
 }
 ```
 
