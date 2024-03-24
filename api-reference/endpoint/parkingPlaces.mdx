@@ -10,9 +10,6 @@ The API provides two distinct methods for accessing parking place information:
 #### Access via Address
 This method is ideal for users interested in retrieving parking place data specifically associated with a given address. By supplying the address, the API returns information on parking places that have been utilized in relation to that address. This approach is particularly useful for users focusing on parking data in a defined area or seeking historical parking usage at a particular location.
 
-#### Access via Coordinates and Distance: 
-For a broader search, this method allows users to specify a set of coordinates and a distance parameter. The API then returns a list of all parking places located within the specified radius from the given point. The distance parameter is defined by the user and is measured using the Chebyshev distance metric. This metric, also known as the maximum metric, calculates the greatest of the differences along latitude and longitude.
-
 #### Parameter for access via Address
 <ParamField query="street" type="string" initialValue="my_street">
   Name of the Street
@@ -30,8 +27,10 @@ For a broader search, this method allows users to specify a set of coordinates a
   TCountry code in ISO 3166-1 alpha-2 format.
 </ParamField>
 
+#### Access via Coordinates and Distance: 
+For a broader search, this method allows users to specify a set of coordinates and a distance parameter. The API then returns a list of all parking places located within the specified radius from the given point. The distance parameter is defined by the user and is measured using the Chebyshev distance metric. This metric, also known as the maximum metric, calculates the greatest of the differences along latitude and longitude.
 
-#### Parameter for access via Address
+#### Parameter for access via Coordinates and Distance
 <ParamField query="lat" type="float" initialValue= "1">
   Latitude of the center coordinates.
 </ParamField>
