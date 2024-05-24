@@ -33,7 +33,7 @@ dependencyResolutionManagement {
 Inside your `build.gradle` add the following dependency:
 
 ```json
-implementation 'io.truemetrics:truemetricssdk:1.0.4'
+implementation 'io.truemetrics:truemetricssdk:1.0.19'
 ```
 
 ### Foreground service and notification
@@ -62,7 +62,7 @@ val notification = NotificationCompat.Builder(context, "FOREGROUND_SERVICE_CHANN
             .setContentTitle("Foreground notification title")
             .setSmallIcon(R.drawable.ic_notification_logo)
             .setOngoing(true)
-						.build()
+		    .build()
 ```
 
 You can find example snippets for creating a notification channel and accompanying notification in the [Demo app](https://github.com/TRUE-Metrics-io/truemetrics_android_demo_app_p).
@@ -89,13 +89,29 @@ Set SDK status callback to get notified about SDK state changes and potential er
 
 ```kotlin
 TruemetricsSDK.setStatusListener(object : StatusListener{
-    override fun onStateChange(state: State) {}
+    override fun onStateChange(state: State) {
+        when(state) {
+            State.UNINITIALIZED -> {
+                // SDK is in UNINITIALIZED state
+            }
+            State.INITIALIZED -> {
+                // SDK is initialized, start recording immediately if needed
+                TruemetricsSDK.startRecording()
+            }
+            State.RECORDING_IN_PROGRESS -> {
+                // Recording is in progress
+            }
+            State.RECORDING_STOPPED -> {
+                // Recording has stopped
+            }
+        }
+    }
     override fun onError(errorCode: ErrorCode, message: String?) {}
     override fun askPermissions(permissions: List<String>) {}
 })
 ```
 
-`onError` callback will be invoked when something happens that prevents SDK from operating, e.g. API KEY authorization fails, device storage gets full, etc. 
+`onError` callback will be invoked when something happens that prevents SDK from operating, e.g. API KEY authorization fails, device storage gets full, etc.
 
 Possible error codes:
 
@@ -105,6 +121,7 @@ Possible error codes:
 | UPLOAD_ERROR | Recordings couldn't be uploaded after exhausting all attempts |
 | STORAGE_FULL | Device storage is full which prevents saving sensor readings |
 | MISSING_NOTIFICATION_PERMISSION | Permission to post notification is not granted which means that Foreground service cannot be started |
+| SENSORS_NOT_WORKING | Some sensors are not wokring as intented. Error message should indicate if any required permissions are missing |
 
 `askPermissions` callback will be invoked based on necesarry permissions for enabled sensors in remote configuration. At the moment, list of permission can include:
 - `android.permission.READ_PHONE_STATE`
@@ -113,6 +130,10 @@ Possible error codes:
 - `android.permission.ACCESS_FINE_LOCATION`
 - `android.permission.ACCESS_BACKGROUND_LOCATION`
 
+**Please note:**
+
+We recommend that you implement status callback and handle at least SENSORS_NOT_WORKING error by stopping recording and notifying user that device may be faulty if app is given all necessary permissions but error still persists.
+
 ### Start recording
 
 ```kotlin
@@ -120,6 +141,10 @@ TruemetricsSDK.startRecording()
 ```
 
 Starting the recording also starts Foreground service and shows notification supplied in `Config` in system's status bar. Recording will continue even when app exits.
+
+**Note**
+
+If you need to start recording immediately after SDK initialization, do it in `StatusListener` -> `onStateChange` callback as shown in **Status callback** section above.
 
 ### Stop recording
 
