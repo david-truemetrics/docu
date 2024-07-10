@@ -33,14 +33,33 @@ dependencyResolutionManagement {
 Inside your `build.gradle` add the following dependency:
 
 ```json
-implementation 'io.truemetrics:truemetricssdk:1.0.19'
+implementation 'io.truemetrics:truemetricssdk:1.0.20'
 ```
+
+### Initialize SDK
+
+SDK behaves like a singleton object that manages its own internal state. Before actually using the SDK you need to initialize it:
+
+```kotlin
+TruemetricsSDK.initialize(
+    context,
+    Config(apiKey = "YOUR-API-KEY")
+)
+```
+
+`Config` object also accepts Boolean `debug` parameter. Set it to `true` if you want to see LogCat output of the SDK. Make sure the parameter is `false` for release builds.
 
 ### Foreground service and notification
 
 In order to reliably collect data, SDK starts a Foreground service and shows a notification while recording is in progress.
 
-SDK manages Foreground service but needs existing notification channel and a notification that will be shown so integrating your app needs to create a notification channel, provide a notification in `Config` parameter and ask user for notification permission if device runs Android 13 or later.
+By default, SDK uses it's own notification for this purpose.
+
+If you want to use your own, you can pass it in `Config` object as `foregroundNotification` parameter.
+
+Make sure to ask user for notification permission if device runs Android 13 or later.
+
+Below you can find sample code for creating notification channel and `Notification` itself.
 
 Creating a notification channel using `NotificationManagerCompat`:
 
@@ -66,22 +85,6 @@ val notification = NotificationCompat.Builder(context, "FOREGROUND_SERVICE_CHANN
 ```
 
 You can find example snippets for creating a notification channel and accompanying notification in the [Demo app](https://github.com/TRUE-Metrics-io/truemetrics_android_demo_app_p).
-
-### Initialize SDK
-
-SDK behaves like a singleton object that manages its own internal state. Before actually using the SDK you need to initialize it:
-
-```kotlin
-TruemetricsSDK.initialize(
-    this,
-    Config(
-        apiKey = "YOUR-API-KEY",
-        foregroundNotification = notification
-    )
-)
-```
-
-`foregroundNotification` parameter is a notification that will be shown when Foreground service is running, i.e. when recording is in progress.
 
 ### Status callback
 
