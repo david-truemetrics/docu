@@ -37,7 +37,7 @@
   "navigation": [
     {
       "group": "Get Started",
-      "pages": [ "quickstart", "functions", "metadata"]
+      "pages": [ "quickstart", "functions", "metadata","data_and_battery"]
     },
     {
       "group": "API Documentation",
