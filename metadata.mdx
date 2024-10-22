@@ -9,6 +9,19 @@ The truemetrics SDK supports logging not only sensor data but also "metadata" fr
 
 This allows you to enrich truemetrics data with specific courier events and data.
 
+## When to Send Metadata and What to Use as a Trigger
+
+When is the right time to send metadata? The truemetrics algorithm matches the metadata closest in time to the stop event. Most customers choose an interaction that occurs close to the actual service, such as scanning the parcel or the courier swiping to confirm arrival at the delivery location. 
+
+Try to avoid triggers that the driver might often forget, such as marking the delivery as closed or starting navigation to the next stop, as this can lead to mismatches between the metadata and the stop data in truemetrics.
+
+If you're unsure, either discuss this with truemetrics or use multiple triggers to send metadata. Just make sure to include the type of trigger so that the data is not interpreted as multiple deliveries.
+
+| Example Key   | Example Value                  |
+| ------------- | ------------------------------ |
+| type_trigger  | job_finalized / scan_performed  |
+| ...           | ...                            |
+
 ## Required Metadata Fields
 
 ### Normalized Addresses
@@ -49,3 +62,5 @@ Typical examples:
 | type_consignee  | B2C                |
 | type_stop       | pickup (or drop-off)|
 | type
+
+
