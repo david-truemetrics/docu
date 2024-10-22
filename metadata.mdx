@@ -1,0 +1,51 @@
+---
+title: 'Metadata'  
+description: 'Metadata allows you to map truemetrics data to your existing data.'
+---
+
+## Introduction
+
+The truemetrics SDK supports logging not only sensor data but also "metadata" from your mobile application.  
+
+This allows you to enrich truemetrics data with specific courier events and data.
+
+## Required Metadata Fields
+
+### Normalized Addresses
+
+For validation, the normalized address of the delivery is required to be logged into the truemetrics data.
+
+It is best practice to send an object similar to the following example:
+
+| Example Key    | Example Value         |
+| -------------- | --------------------- |
+| country_code   | DE                    |
+| postal_code    | 10762                 |
+| street         | Pflanzstrasse          |
+| house_number   | 5                     |
+
+### Identifiers
+
+Most customers already have internal identifiers for deliveries, parcels, tours, and other related entities.
+
+truemetrics automatically enriches stop KPIs, parking spots, and entrances by using these identifiers. This makes it easier you to track, check, and evaluate truemetrics data.
+
+| Example Key          | Example Value     |
+| -------------------- | ----------------- |
+| identifier_driver    | 1234abc            |
+| identifier_tour      | 1234abc            |
+| identifier_delivery  | 1234abc            |
+| identifier_stop      | 1234abc            |
+| ...                  | 1234abc            |
+
+### Service Type
+
+Stop times can vary significantly depending on the type of service performed. Was it a fast B2B drop-off with a single parcel, or a more complex B2C pickup requiring a signature? You know best what is important for your business, and truemetrics allows you to enrich the data with your specific categories, enabling you to later analyze the data based on those categories.
+
+Typical examples:
+
+| Example Key   | Example Value        |
+| ------------- | -------------------- |
+| type_consignee  | B2C                |
+| type_stop       | pickup (or drop-off)|
+| type
