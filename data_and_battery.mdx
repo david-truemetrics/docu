@@ -10,7 +10,7 @@ It is challenging to provide an exact measure of the SDK's battery consumption, 
 ### Scenario 1: Existing GPS and Backend Communication
 In this scenario, let's assume your app already frequently records the courier's GPS position (e.g., at 0.5 Hz) and communicates with the backend periodically using mobile data. Additionally, several background processes are running.
 
-In this case, the SDK (Truemetrics) will not significantly increase battery consumption. Since your app is already using the power-intensive GPS receiver, Truemetrics simply reuses the GPS data. While there may be a slight increase in battery usage due to communication with the backend, it will be so minimal that it would be difficult to measure.
+In this case, the SDK (Truemetrics) will not significantly increase battery consumption. Since your app is already using the power-intensive GPS receiver, Truemetrics simply reuses the GPS data. While there may be a slight increase in battery usage due to communication with the backend, it will be so minimal that it is most of the time difficult to measure.
 
 ### Scenario 2: No Existing Location Services in your app
 In the second scenario, your app currently doesn't use the location provider and communicates minimally with the backend, sending almost no data. All physical sensors are disabled. However, adding TrueMetrics will increase battery consumption. As a rough estimate, battery usage may rise to about 7%–15% per hour, depending on factors such as the Android version, manufacturer, and phone model. This typically results in a battery life of 7–11 hours.
