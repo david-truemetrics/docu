@@ -16,8 +16,20 @@ In this case, the SDK (Truemetrics) will not significantly increase battery cons
 In the second scenario, your app currently does not use the location provider and has very limited, optimized communication with the backend. Nearly no data is send. All physical sensors are deactivated. Here, adding truemetrics will introduce some additional battery consumption. As a roght reference, battery consumption typically ends at approximately 7%-15% of the total battery level per hour, depending on the Android version, manufacturer, and phone model - resulting in 7-11 hours of operation.
 
 # Data consumption
-## Data sending modes
-### Upload-alway mode
-### Wifi-only mode
-### Metadata-triggered mode
+trueMetrics collects sensor data from mobile phones and sends it to its backend system to analyze stops, detect entrances, and identify parking locations. This process generates additional data traffic. It can be challenging to estimate the total amount of data transferred each month, as many factors influence the volume. However, most of our customers upload between 400MB and 2GB per month, while downloads typically stay below 50MB.
 
+## Data Transmission Modes
+The amount of data sent can vary significantly based on the selected upload mode. We currently offer three modes: Upload-Always, WiFi-Only, and Metadata-Triggered. You cannot change the mode yourself; please contact us, and we can adjust it on our backend.
+
+### Upload-Always Mode
+This is the default mode, allowing the SDK to upload data using either WiFi or mobile connections.
+
+###  WiFi-Only Mode
+In this mode, data is stored locally on the mobile device and only uploaded when a WiFi connection is available. This is ideal if your drivers regularly access WiFi networks.
+
+### Metadata-Triggered Mode
+This mode was developed to reduce unnecessary sensor data transmission. For example, periods like a courier's lunch break or time spent at a depot often don’t need to be recorded and transmitted, as they do not provide valuable information and unnecessarily increase data consumption.
+
+In Metadata-triggered Mode, sensor data is buffered on the device and only sent when metadata is recorded around the same time.
+
+For instance, if a driver spends time in a depot from 8:00 AM to 10:00 AM and then completes the first delivery at 10:30 AM (triggering metadata), only sensor data from around 10:20 AM to 10:40 AM would be sent.
