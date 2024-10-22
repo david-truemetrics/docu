@@ -3,11 +3,11 @@ title: 'Metadata'
 description: 'Logging Metadata allows you to map truemetrics data to your existing data.'
 ---
 
-## Introduction
+# Introduction
 
 The truemetrics SDK supports logging of not only sensor data but also metadata from your mobile application. This allows you to enrich truemetrics data with specific courier events and data to get most of truemetrics data.
 
-## When to send metadata and what to use as trigger
+# When to send metadata and what to use as trigger
 
 When is the right time to send metadata? The truemetrics algorithm matches the metadata closest in time to the stop event. Most customers choose an interaction that occurs close to the actual service, such as scanning the parcel or the courier swiping to confirm arrival at the delivery location. 
 
@@ -21,17 +21,17 @@ If you're unsure, either discuss this with truemetrics or use multiple triggers 
 | ...           | ...                            |
 
 
-## How to send metadata
+# How to send metadata
 Super simple: just add the following line to send metadata as key-value pair.
 ```kotlin
 TruemetricsSDK.logMetadata(payload: Map<String, String>)
 ```
 For more detailed explanation go to [logging metadata docu](https://docu.truemetrics.cloud/functions#log-metadata)
 
-## Required Metadata Fields
+# Required Metadata Fields
 
 
-### Normalized Addresses
+## Normalized Addresses
 
 For validation, the normalized address of the delivery is required to be logged into the truemetrics data.
 
@@ -44,7 +44,7 @@ It is best practice to send an object similar to the following example:
 | street         | Pflanzstrasse          |
 | house_number   | 5                     |
 
-### Identifiers
+## Identifiers
 
 Most customers already have internal identifiers for deliveries, parcels, tours, and other related entities.
 
@@ -58,7 +58,7 @@ truemetrics automatically enriches stop KPIs, parking spots, and entrances by us
 | identifier_stop      | 531234abc            |
 | ...                  |  ...             |
 
-### Service Type
+## Service Type
 
 Stop times can vary significantly depending on the type of service performed. Was it a fast B2B drop-off with a single parcel, or a more complex B2C pickup requiring a signature? You know best what is important for your business, and truemetrics allows you to enrich the data with your specific categories, enabling you to later analyze the data based on those categories.
 
@@ -70,9 +70,9 @@ Typical examples:
 | type_stop       | pickup (or drop-off)|
 | type_service    | E42c (internal code)|
 
-## Additional Best Practices
+# Additional Best Practices
 
-### Reference Location
+## Reference Location
 
 The truemetrics algorithm does not rely on the location to which you are sending your driver. Nevertheless, in the early stages of integration, many customers find it useful to compare the actual delivery location with the expected location to assess the accuracy of the address and geocoder.
 
@@ -81,7 +81,7 @@ The truemetrics algorithm does not rely on the location to which you are sending
 | lat           | 40.3123              |
 | lon           | 13.533               |
 
-### Vehicle types
+## Vehicle types
 
 Some of our customers have multiple vehicle types e.g. Trucks, cars and two-wheelers.
 
