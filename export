@@ -1,7 +1,7 @@
 # Export of truemetrics
 
 By default, you have 2 different ways to consume data from truemetrics. The first and most widely used case is batch export of all of your data as a parquet file.
-Alternatively we also offer customer-specific Restapi specialized on the use case. In this part of the documentation we will concentrate on the batch export and for more information and inspiration about the REST API go to the [API Reference](https://docu.truemetrics.cloud/api-reference/endpoint/parkingPlaces)
+Alternatively, we also offer customer-specific Restapi specialized on the use case. In this part of the documentation we will concentrate on the batch export and for more information and inspiration about the REST API go to the [API Reference](https://docu.truemetrics.cloud/api-reference/endpoint/parkingPlaces)
 
 The data export typically includes two types of data: Stop KPI Data and Location Data.
 
@@ -9,7 +9,6 @@ The data export typically includes two types of data: Stop KPI Data and Location
 * Location Data: Includes all recorded parking places and entrances.
 
 ## Stop KPI Data
-
 Stop KPI data is typically exported in a tabular format (parquet), with the following fields:
 
 #### Delivery ID 
@@ -24,7 +23,7 @@ Index to allows simple spatial aggregations to
 Total time between leaving and returning to the vehicle.
 #### Outdoor Service Time to Customer
 Duration between leaving the vehicle and entering the customer’s building.
-#### Indoor  Service Time
+#### Indoor Service Time
 Total duration spent inside the customer’s building to perform the delivery.
 #### Outdoor Service Time from Customer
 Time between leaving the customer’s building and re-entering the vehicle.
@@ -33,7 +32,6 @@ Duration (in seconds) from parking to leaving the vehicle to approach the delive
 #### Search Time
 Estimated time to locate the correct entrance or delivery location. This is calculated as the difference between the time from the vehicle to the entrance and back to the vehicle. This metric is an estimate and may be influenced by factors such as waiting at the door or handling a heavy delivery. Note: This duration is only available when the delivery is conducted indoors.
 Custom Fields: truemetrics enrich your data with metadata based on the information you provide (e.g., tour ID, job type, driver, or vehicle type), enabling flexible analysis and filtering tailored to your needs.
-
 
 ## Location Data
 Location data includes recorded entrances and parking places, typically stored as GeoParquet files, with the following fields:
@@ -45,11 +43,14 @@ Truemetrics’ internal identifier for the position. While unique, this ID may c
 #### Geometry 
 Latitude and longitude coordinates of the entrance or parking place stored as geometry columns ([Geometry columns in Geoparquet](https://geoparquet.org/releases/v1.0.0/)
 ) 
-####Position Type
-Specifies whether the position is a parking spot or an entrance.
+#### Position Type
+This string specifies whether the position is a parking spot or an entrance.
 #### Calculation Timestamp
 Timestamp when the position was calculated, typically a few hours after delivery.
 #### Accuracy
 Estimated accuracy of the entrance or parking location. For entrances, accuracy typically improves with each detection because multiple detections are taken into account and fused to an entrance detection with higher accuracy. For parking places, accuracy is harder to interpret and can vary as drivers may not park in the same spot consistently.
 #### Custom Fields
 truemetrics enrich your data with metadata based on the information you provide (e.g., tour ID, job type, driver, or vehicle type), enabling flexible analysis and filtering tailored to your needs.
+
+## Architecture
+You maybe wonder how you get actually the parquet export now. And here we have a simple answer - discuss it with truemetrics. From shared S3s to pre-signed urls or dropbox folders, we find a smooth way together to transfer the data.
