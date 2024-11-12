@@ -6,6 +6,10 @@
     "light": "/logo/light.svg"
   },
   "favicon": "/favicon.png",
+  "modeToggle": {
+    "default": "light",
+    "isHidden": true
+  },
   "colors": {
     "primary": "#0097a7",
     "light": "#89effa",
