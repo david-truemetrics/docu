@@ -60,5 +60,11 @@ Estimated accuracy of the entrance or parking location. For entrances, accuracy 
 #### Custom Fields based on your metadata
 truemetrics enrich your data with metadata based on the information you provide (e.g., tour ID, job type, driver, or vehicle type), enabling flexible analysis and filtering tailored to your needs.
 
+```json / parquet
+{"h3_10":"8a1f1884544ffff","id_address":"f30ae15b1b5ba0e04093d841fc81a48b27e55cecdff905a3c36c94d65489921c","postalcode": "test","countrycode": "DE",
+    "street":"teststreet", "street_number" : "7a", "type_position": "parkingplace", "t_utc_created":1731144069.383282,"id_position":"6f8bded37a7b35a7f51e0fc8019462388704b2b6097c7e5636d266d54e18566a","accuracy":9.648,"number_detections":1,"geometry":{"0":1,"1":1,"2":0,"3":0,"4":0,"5":14,"6":16,"7":204,"8":209,"9":227,"10":93,"11":42,"12":64,"13":214,"14":173,"15":249,"16":76,"17":209,"18":53,"19":74,"20":64}}
+
+```
+
 ## Architecture
 You maybe wonder how you get actually the parquet export now. And here we have a simple answer - discuss it with truemetrics. From shared S3s to pre-signed urls or dropbox folders, together we find a smooth way  to transfer the data into your infrastructure
