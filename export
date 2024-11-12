@@ -1,1 +1,25 @@
-export
+# Export of truemetrics
+
+By default, you have 2 different way to consume data from truemetrics. The first and mostly widly used case is batch export of all of your data as parquet file.
+Alternativly we also offer customer specific Restapi specialised on the use case. In this part of the documentation we will concentrate on the batch export and for more informations and inspiration about the REST API go to the [API Reference](https://docu.truemetrics.cloud/api-reference/endpoint/parkingPlaces)
+
+The data export typically includes two types of data: Stop KPI Data and Location Data.
+
+Stop KPI Data: Contains detailed information about each stop / delivery
+Location Data: Includes all recorded parking places and entrances.
+
+## Stop KPI Data
+
+Stop KPI data is typically exported in a tabular format (parquet), with the following fields:
+
+Delivery ID: Identifier provided by your metadata making it easier to integrate the data into your data warehouse.
+Stop ID: Primarily used for debugging and analysis purposes.
+Stop Time: Total duration of the stop in seconds.
+
+H3 index: Index to allows simple spatial aggretions to 
+Service Time: Total time between leaving and returning to the vehicle.
+Outdoor Service Time to Customer: Time between leaving the vehicle and entering the customer’s building.
+Indoor  Service Time: Total time spent inside the customer’s building to performe the delivery.
+Outdoor Service Time from Customer: Time between leaving the customer’s building and re-entering the vehicle.
+Picking Time: Duration (in seconds) from parking to leaving the vehicle to approach the delivery location.
+Search Time: Estimated time to locate the correct entrance or delivery location. This is calculated as the difference between the time from the vehicle to the entrance and back to the vehicle. This metric is an estimate and may be influenced by factors such as waiting at the door or handling a heavy delivery. Note: This duration is only available when the delivery is conducted indoors. Negative search times, can appear if the courier has needed more time to come back to the car then he needed to arrive at the customer (e.g. if he or she decided to take a break)
