@@ -19,19 +19,19 @@ _type: STRING |_ The identifier provided by your metadata makes integrating the 
 #### Stop ID 
 _type: STRING |_ Primarily used for debugging and analysis purposes.
 #### Stopping Time 
-Total duration of the stop in seconds. This value is showing you the actual stop time of a delivery. Completely without geofences and swipe interaction of your driver, you can measure how much time was needed to perform the delivery.
+_type: FLOAT (UTC seconds)|_ Total duration of the stop in seconds. This value is showing you the actual stop time of a delivery. Completely without geofences and swipe interaction of your driver, you can measure how much time was needed to perform the delivery.
 #### H3 index
-Index to allows simple spatial aggregations to get further insights. A typical example would be that you are interested in which parts of your delivery area, exceed the average value. With the h3 index you are ready to start your spatial analyses.
+_type: STRING (H3 Level 10)|_ Index to allows simple spatial aggregations to get further insights. A typical example would be that you are interested in which parts of your delivery area, exceed the average value. With the h3 index you are ready to start your spatial analyses.
 #### Service Time
-Total time between leaving and returning to the vehicle.
+_type: FLOAT (seconds)|_ Total time between leaving and returning to the vehicle.
 #### Outdoor Service Time to Customer
-Duration between leaving the vehicle and entering the customer’s building.
+_type: FLOAT (seconds)|_ Duration between leaving the vehicle and entering the customer’s building.
 #### Indoor Service Time
-Total duration spent inside the customer’s building to perform the delivery.
+_type: FLOAT (seconds)|_ Total duration spent inside the customer’s building to perform the delivery.
 #### Outdoor Service Time from Customer
-Time between leaving the customer’s building and re-entering the vehicle.
+_type: FLOAT (seconds)|_ Time between leaving the customer’s building and re-entering the vehicle.
 #### Picking Time
-Duration (in seconds) from parking to leaving the vehicle to approach the delivery location.
+_type: FLOAT (seconds)|_ Duration (in seconds) from parking to leaving the vehicle to approach the delivery location.
 <img height="240" noZoom src="/images/stopskpis.png" />
 
 
