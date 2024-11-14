@@ -19,24 +19,24 @@ _type: STRING |_ The identifier provided by your metadata makes integrating the 
 #### Stop ID 
 _type: STRING |_ Primarily used for debugging and analysis purposes.
 #### Stopping Time 
-_type: FLOAT (UTC seconds)|_ Total duration of the stop in seconds. This value is showing you the actual stop time of a delivery. Completely without geofences and swipe interaction of your driver, you can measure how much time was needed to perform the delivery.
+_type: FLOAT (UTC seconds) |_ Total duration of the stop in seconds. This value is showing you the actual stop time of a delivery. Completely without geofences and swipe interaction of your driver, you can measure how much time was needed to perform the delivery.
 #### H3 index
 _type: STRING (H3 Level 10)|_ Index to allows simple spatial aggregations to get further insights. A typical example would be that you are interested in which parts of your delivery area, exceed the average value. With the h3 index you are ready to start your spatial analyses.
 #### Service Time
-_type: FLOAT (seconds)|_ Total time between leaving and returning to the vehicle.
+_type: FLOAT (seconds) |_ Total time between leaving and returning to the vehicle.
 #### Outdoor Service Time to Customer
-_type: FLOAT (seconds)|_ Duration between leaving the vehicle and entering the customer’s building.
+_type: FLOAT (seconds) |_ Duration between leaving the vehicle and entering the customer’s building.
 #### Indoor Service Time
-_type: FLOAT (seconds)|_ Total duration spent inside the customer’s building to perform the delivery.
+_type: FLOAT (seconds) |_ Total duration spent inside the customer’s building to perform the delivery.
 #### Outdoor Service Time from Customer
-_type: FLOAT (seconds)|_ Time between leaving the customer’s building and re-entering the vehicle.
+_type: FLOAT (seconds) |_ Time between leaving the customer’s building and re-entering the vehicle.
 #### Picking Time
-_type: FLOAT (seconds)|_ Duration (in seconds) from parking to leaving the vehicle to approach the delivery location.
+_type: FLOAT (seconds) |_ Duration (in seconds) from parking to leaving the vehicle to approach the delivery location.
 <img height="240" noZoom src="/images/stopskpis.png" />
 
 
 #### Search Time
-Estimated time to locate the correct entrance or delivery location. This is calculated as the difference between the time from the vehicle to the entrance and back to the vehicle. This metric is an estimate and may be influenced by factors such as waiting at the door or handling a heavy delivery. Note: This duration is only available when the delivery is conducted indoors.
+_type: FLOAT (seconds) |_ Estimated time to locate the correct entrance or delivery location. This is calculated as the difference between the time from the vehicle to the entrance and back to the vehicle. This metric is an estimate and may be influenced by factors such as waiting at the door or handling a heavy delivery. Note: This duration is only available when the delivery is conducted indoors.
 <img height="160" noZoom src="/images/search.png" />
 
 
@@ -68,18 +68,18 @@ The following example could be a typical line / row of the the parquet file
 Location data includes recorded entrances and parking places, typically stored as GeoParquet files, with the following fields:
 
 #### Address 
-The Address is the the primary key, which can be either an address ID or the actual address string depending on what you send as metadata. Multiple entrances detected across deliveries are aggregated into a single, more accurate location. Multiple parking places can also be provided, depending on your visualization needs. Please discuss specific requirements with your support contact.
+_type: STRING (multiple) |_  The Address is the the primary key, which can be either an address ID or the actual address string depending on what you send as metadata. Multiple entrances detected across deliveries are aggregated into a single, more accurate location. Multiple parking places can also be provided, depending on your visualization needs. Please discuss specific requirements with your support contact.
 #### Position ID
-Truemetrics’ internal identifier for the position. While unique, this ID may change; avoid using it for filtering.
+_type: STRING |_ Truemetrics’ internal identifier for the position. While unique, this ID may change; avoid using it for filtering.
 #### Geometry 
-Latitude and longitude coordinates of the entrance or parking place stored as geometry columns ([Geometry columns in Geoparquet](https://geoparquet.org/releases/v1.0.0/)
+_type: GEOOBJECT |_ Latitude and longitude coordinates of the entrance or parking place stored as geometry columns ([Geometry columns in Geoparquet](https://geoparquet.org/releases/v1.0.0/)
 ) 
 #### Position Type
-This string specifies whether the position is a parking spot or an entrance.
+_type: STRING |_ This string specifies whether the position is a parking spot or an entrance.
 #### Timestamp
-Timestamp when the position was calculated, typically a few hours after delivery.
+_type: FLOAT (UTC seconds) |_ Timestamp in UTC seconds when the position was calculated, typically a few hours after delivery.
 #### Accuracy
-Estimated accuracy of the entrance or parking location. For entrances, accuracy typically improves with each detection because multiple detections are taken into account and fused to an entrance detection with higher accuracy. For parking places, accuracy is harder to interpret and can vary as drivers may not park in the same spot consistently.
+_type: FLOAT (meters) |_ Estimated accuracy of the entrance or parking location. For entrances, accuracy typically improves with each detection because multiple detections are taken into account and fused to an entrance detection with higher accuracy. For parking places, accuracy is harder to interpret and can vary as drivers may not park in the same spot consistently.
 #### Custom Fields based on your metadata
 truemetrics enrich your data with metadata based on the information you provide (e.g., tour ID, job type, driver, or vehicle type), enabling flexible analysis and filtering tailored to your needs.
 
