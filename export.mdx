@@ -9,15 +9,17 @@ The data export typically includes two types of data: Stop KPI Data and Location
 * Location Data: Includes all recorded parking places and entrances.
 
 ## Stop KPI Data
-_type: STRING | unit: none_
+
 
 Stop KPI data is typically exported in a tabular format (parquet), with the following fields. 
 
 
 #### Delivery ID 
+_type: STRING | unit: none_
 
 The identifier provided by your metadata makes integrating the data into your data warehouse easier.
 #### Stop ID 
+_type: STRING | unit: none_
 Primarily used for debugging and analysis purposes.
 #### Stopping Time 
 Total duration of the stop in seconds. This value is showing you the actual stop time of a delivery. Completely without geofences and swipe interaction of your driver, you can measure how much time was needed to perform the delivery.
