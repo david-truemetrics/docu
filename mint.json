@@ -41,7 +41,7 @@
   "navigation": [
     {
       "group": "Get Started",
-      "pages": [ "quickstart", "functions", "metadata","data_and_battery", "Data Export"]
+      "pages": [ "quickstart", "functions", "metadata","data_and_battery", "export"]
     },
     {
       "group": "Example REST API",
