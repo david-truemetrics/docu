@@ -41,8 +41,7 @@
   "navigation": [
     {
       "group": "Get Started",
-      "pages": [ "quickstart", "functions", "metadata","data_and_battery", "data_export"]
-    },
+      "pages": [ "quickstart", "functions", "metadata","data_and_battery", "data_export",
     {
       "group": "Example REST API",
       "pages": [
@@ -50,6 +49,7 @@
         "api-reference/endpoint/deliveries",
         "api-reference/endpoint/entrances"
       ]
+    }]
     }
   ],
   "footerSocials": {
