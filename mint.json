@@ -35,7 +35,7 @@
   "tabs": [
     {
       "name": "Data Export",
-      "url": "api-reference/endpoint/export"
+      "url": "export"
     }
   ],
   "navigation": [
