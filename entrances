@@ -7,14 +7,14 @@
                     "lon": "0"
                 }
             ],
-            "hash_consignee": null,
+            "hash_customer": null,
             "id_entrance": "bc4e4fb281da041c5bfa51a03eaee5e9b1cfe39f9394396121f7044a1b107761",
             "created": "1688553899.8072311878204345703125",
             "streetnumber": "80",
             "postalcode": "12345",
             "country": "DE",
             "id_phone": "my_phone_id",
-            "adress_raw": "Meine Adressse ist hier",
+            "adress_raw": "My address is here",
             "coords_entrance": {
                 "lat": "0",
                 "lon": "0"
