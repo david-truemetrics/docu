@@ -50,7 +50,7 @@
     {
       "group": "Data Export",
       "pages": [
-        "how_to_get_data",
+        "Data_Export_Introduction",
         "restAPI",
         "BulkExport",
         "Data_Description_Format"
