@@ -50,9 +50,9 @@
     {
       "group": "Data Export",
       "pages": [
-        "Introduction_to_data_export",
+        "Data_Export_Introduction",
         "restAPI",
-        "BulkExport",
+        "batchexport",
         "Data_Description_Format"
       ]
     }
