@@ -1,0 +1,60 @@
+
+
+By default, you have 2 different ways to consume data from truemetrics.
+* batch export (normally via parquet)
+* customer-specific REST API
+
+The first and most widely used case is batch export of all of your data as a parquet file.
+Alternatively, we also offer customer-specific REST API specialized on the customer specific use case. In this part of the documentation we will concentrate on the batch export and for more information and inspiration about the REST API go to the [API Reference](https://docu.truemetrics.cloud/api-reference/endpoint/parkingPlaces)
+
+The data export typically includes two types of data: Stop KPI Data and Location Data.
+
+* Stop KPI Data: Contains detailed information about each stop/delivery
+* Location Data: Includes all recorded parking places and entrances.
+
+#### Example row of stop KPIs
+The following example could be a typical line / row of the the parquet file
+```json
+{
+  "t_utc_created":1730508307.309725,
+  "id_stop":"38035d61a2567dc161c039a47b286fdc61c49d75f49dceade5e010aafcbd09a0",
+  "ids_delivery_external":["XXXXDHDHDH"],
+  "id_driver":"YXXDDX12",
+  "type_vehicle":"unknown",
+  "t_picking":3.0833332538604736,
+  "t_stopping":49.333333253860474, 
+  "t_buffer":3.0833332538604736,
+  "t_indoor":0,
+  "t_outdoor_from_customer":-21.583333373069763,
+  "t_outdoor_to_customer":-21.583333373069763,
+  "t_search":0,
+  "h3_10":"8a20e60a0c67fff",
+}
+```
+
+## Location Data
+Location data includes recorded entrances and parking places. For a detailed description of each variable, please reference to the [description and formats] (LOREM) section. The data is typically typically exported as GeoParquet files, with the following fields.
+
+
+#### Example row of location data
+The following example could be a typical line/row of the parquet file. 
+```json
+{
+  "h3_10":"8a1f1884544ffff",
+  "id_address":"f30ae15b1b5ba0e04093d841fc81a48b27e55cecdff905a3c36c94d65489921c",
+  "postalcode": "test",
+  "countrycode": "DE",
+  "street":"teststreet", 
+  "street_number" : "7a", 
+  "type_position": "parkingplace", 
+  "metadata_from_customer":"test", "t_utc_created":1731144069.383282,
+  "id_position":"6f8bded37a7b35a7f51e0fc8019462388704b2b6097c7e5636d266d54e18566a",
+  "accuracy":9.648,
+  "number_detections":1,
+  "geometry":{"0":1,"1":1,"2":0,"3":0,"4":0,"5":14,"6":16,"7":204,"8":209,"9":227,"10":93,"11":42,"12":64,"13":214,"14":173,"15":249,"16":76,"17":209,"18":53,"19":74,"20":64}
+}
+
+```
+
+## Architecture
+You maybe wonder how you get actually the parquet export now. And here we have a simple answer - discuss it with truemetrics. From shared S3s to pre-signed urls or dropbox folders, together we find a smooth way  to transfer the data into your infrastructure
