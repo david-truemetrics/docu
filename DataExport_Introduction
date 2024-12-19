@@ -1,0 +1,24 @@
+## Consuming Data from Truemetrics
+
+By default, truemetrics provides **two different ways** to consume your data:
+
+1. **Batch Export** (commonly via Parquet files)
+2. **Customer-Specific REST API**
+
+### Batch Export
+The most widely used method is the **batch export**, where all your data is provided as a Parquet file. 
+
+Alternatively, you can use a **customer-specific REST API**, tailored to your unique use case.  
+For more details and inspiration about using the REST API, refer to the [API Reference](#).
+
+### Types of Data in Exports
+A typical data export includes **two main types of data**:
+
+1. **Stop KPI Data**  
+   Contains detailed information about each stop/delivery, such as performance metrics.
+
+2. **Location Data**  
+   Includes all recorded parking places and entrances, providing spatial insights.
+
+In this section, we will focus on the [batch export](https://docu.truemetrics.cloud/batchexport). 
+For REST API details, visit the [API Reference](https://docu.truemetrics.cloud/restAPI).
