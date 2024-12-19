@@ -1,0 +1,323 @@
+<Info> This is just an example of how a customer-specific endpoint can look like. </Info>
+
+### Query Parameters 
+
+<ParamField path="id_delivery" type="string" initialValue="02ba969157efe246129b586b736f4e276e6de5d77b726bb550449519966c1360">
+  `id` of the delivery.
+</ParamField>
+
+<ParamField header="Content-Type" type="string" initialValue='application/json' >
+</ParamField>
+<ParamField header="x-api-key" type="string" initialValue='MSgcfnGu0p3E2KhFwTP3N5NSrCSXm54U6DI0PW51' >
+</ParamField>
+
+### Response
+
+<ResponseField name="results" type="array">
+  Array of results for the given id. If the array is empty, no deliveries have been found. If the delivery id has been used multiple times during recording, also multiple entries in the result array are possible.
+</ResponseField>
+
+<ResponseField name="message" type="string">
+  Message indicating whether the call was successful.
+</ResponseField>
+
+<RequestExample>
+
+```bash Example Request
+
+curl --location 'https://api.truemetrics.cloud/V2/results/deliveries/id_example_external' \
+--header 'x-api-key: YOURKEY' \
+--header 'Content-Type: application/json'
+```
+
+</RequestExample>
+
+<ResponseExample>
+
+```json Response
+{
+  "statusCode": 200,
+  "headers": {
+    "Access-Control-Allow-Origin": "*",
+    "Access-Control-Allow-Credentials": true
+  },
+  "body": {
+    "stops": [
+      {
+        "ts": [
+          1699225817.83503,
+          1699225834.979354,
+          1699225841.0302918,
+          1699225897.5057118,
+          1699225918.6839943,
+          1699225937.8452976
+        ],
+        "ts_event": [
+          1699225863
+        ],
+        "number_of_events": 1,
+        "id_phone": "",
+        "ids_address": [],
+        "version_sequencing": "v2",
+        "lats_reference_external": [
+          59.40858
+        ],
+        "id_stop": "asda321sdasdasd342324a",
+        "hash_deliveries": "asda321sdasdasd342324a",
+        "t_utc_created": 1701252019.442101,
+        "t_end": [
+          24.6864472502
+        ],
+        "types_event": [
+          "pickup"
+        ],
+        "t_start": 1699225817.83503,
+        "use_labels": false,
+        "ids_all_delivery_external": [
+          "id_example_external"
+        ],
+        "lats_event": [
+          59.408449692
+        ],
+        "states": [
+          "START",
+          "S",
+          "C",
+          "S2",
+          "F",
+          "END"
+        ],
+        "lons_event": [
+          24.6864472502
+        ],
+        "lons_reference_external": [
+          24.68667
+        ],
+        "id_delivery_external": "id_example_external",
+        "coords_parking": {
+          "lat": 59.4084750686,
+          "lon": 24.6864458694
+        },
+        "t_service_indoors": 0,
+        "t_service_outdoors": 77.6537024974823,
+        "t_picking": 6.05093789100647,
+        "t_total": 83.70464038848877,
+        "t_stop": 83.70464038848877
+      },
+      {
+        "ts": [
+          1699226203.1683023,
+          1699226222.1939633,
+          1699226224.1966643,
+          1699226277.268245,
+          1699226943.1663785,
+          1699226952.1785338
+        ],
+        "ts_event": [
+          1699226268
+        ],
+        "number_of_events": 1,
+        "id_phone": "id_phone_example",
+        "ids_address": [],
+        "version_sequencing": "v2",
+        "lats_reference_external": [
+          59.39821
+        ],
+        "id_stop": "id_stop_example",
+        "hash_deliveries": "asda321sdasdasd342324a",
+        "t_utc_created": 1701252202.920812,
+        "t_end": [
+          24.6468801512
+        ],
+        "types_event": [
+          "delivery"
+        ],
+        "t_start": 1699226203.1683023,
+        "use_labels": false,
+        "ids_all_delivery_external": [
+          "id_example_external"
+        ],
+        "lats_event": [
+          59.3983149706
+        ],
+        "states": [
+          "START",
+          "S",
+          "C",
+          "S2",
+          "F",
+          "END"
+        ],
+        "lons_event": [
+          24.6468801512
+        ],
+        "lons_reference_external": [
+          24.647078
+        ],
+        "id_delivery_external": "id_example_external",
+        "coords_parking": {
+          "lat": 59.3983578,
+          "lon": 24.6468601
+        },
+        "t_service_indoors": 0,
+        "t_service_outdoors": 718.9697141647339,
+        "t_picking": 2.0027010440826416,
+        "t_total": 720.9724152088165,
+        "t_stop": 720.9724152088165
+      }
+    ],
+    "message": "Successfully requested delivery."
+  }
+}
+```
+
+</ResponseExample>
+
+
+<Info> This is just an example of how a customer-specific endpoint can look like. </Info>
+
+
+### Query Parameters
+
+<ParamField
+  query="id_customer"
+  type="string"
+>
+  `id` number of the customer, as a string.
+</ParamField>
+
+<ParamField
+  header="Content-Type"
+  type="string"
+  initialValue='application/json'
+></ParamField>
+
+<ParamField
+  header="x-api-key"
+  type="string"
+  initialValue='MSgcfnGu0p3E2KhFwTP3N5NSrCSXm54U6DI0PW51'
+></ParamField>
+
+### Response
+
+<ResponseField name="results" type="array">
+  Array of entrances for the given address.
+</ResponseField>
+
+<ResponseField name="message" type="string">
+  Message indicating whether the call was successful.
+</ResponseField>
+
+<RequestExample>
+```bash Example Request
+curl --location 'https://api.truemetrics.cloud/V2/results/entrances?id_customer=12345' \
+--header 'x-api-key: YOURKEY' \
+--header 'Content-Type: application/json'
+```
+</RequestExample>
+
+<ResponseExample>
+
+```json Response
+{
+    "results": [
+        {
+            "entrances": [
+                {
+                    "lat": "0.0",
+                    "lon": "0.0"
+                }
+            ]
+        }
+    ],
+    "message": "Successfully retrieved entrances for this id_customer."
+}
+```
+</ResponseExample>
+
+
+
+<Info> This is just an example of how a customer-specific endpoint can look like. </Info>
+
+### Query Parameters
+The API provides two distinct methods for accessing parking place information:
+
+#### Access via Address
+This method is ideal for users interested in retrieving parking place data specifically associated with a given address. By supplying the address, the API returns information on parking places that have been utilized in relation to that address. This approach is particularly useful for users focusing on parking data in a defined area or seeking historical parking usage at a particular location.
+
+#### Parameter for access via Address
+<ParamField query="street" type="string" initialValue="my_street">
+  Name of the Street
+</ParamField>
+<ParamField query="streetnumber" type="string" initialValue="80">
+  Streetnumber of the address.
+</ParamField>
+<ParamField query="locality" type="string" initialValue= "Berlin">
+  Locality of the address.
+</ParamField>
+<ParamField query="postalcode" type="string" initialValue= "12345">
+  Postcal code of the address.
+</ParamField>
+<ParamField query="country" type="string" initialValue= "DE">
+  TCountry code in ISO 3166-1 alpha-2 format.
+</ParamField>
+
+#### Access via Coordinates and Distance: 
+For a broader search, this method allows users to specify a set of coordinates and a distance parameter. The API then returns a list of all parking places located within the specified radius from the given point. The distance parameter is defined by the user and is measured using the Chebyshev distance metric. This metric, also known as the maximum metric, calculates the greatest of the differences along latitude and longitude.
+
+#### Parameter for access via Coordinates and Distance
+<ParamField query="lat" type="float" initialValue= "1">
+  Latitude of the center coordinates.
+</ParamField>
+<ParamField query="lon" type="float" initialValue= "1">
+  Longitude of the center coordinates.
+</ParamField>
+<ParamField query="distance" type="float" initialValue= "1">
+  Distance in meters in which the parking places shall be searched. The maximal value is 200.
+</ParamField>
+
+
+#### Parameters for both access methods
+<ParamField header="Content-Type" type="string" initialValue="application/json" >
+</ParamField>
+<ParamField header="x-api-key" type="string" initialValue="MSgcfnGu0p3E2KhFwTP3N5NSrCSXm54U6DI0PW51" >
+</ParamField>
+
+### Response
+
+<ResponseField name="results" type="array">
+  An array of parking places for the given address.
+</ResponseField>
+
+<ResponseField name="message" type="string">
+  A message indicating whether the call was successful.
+</ResponseField>
+
+
+<RequestExample>
+
+```bash Example Request for accessing via coordinates
+curl --location 'https://api.truemetrics.cloud/V2/results/parkingplaces?lat=50.3&lon=13.5&distance=500' \
+--header 'x-api-key: YOURKEY' \
+--header 'Content-Type: application/json'
+```
+
+</RequestExample>
+
+
+<ResponseExample>
+
+```json Response
+{
+    "results": [
+        {
+            "id": "af25987c50ad6fe71d622852623c9fa95c07c6a72651470b0b4ffc62dc4c8801",
+            "lat": "0",
+            "lon": "0"
+        }
+    ],
+    "message": "successfully retrieved 1 entry."
+}
+```
+
+</ResponseExample>
